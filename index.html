@@ -135,22 +135,25 @@
     fill: #9CA3AF !important; /* neutral-400 */
   }
 </style>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>
     <!-- 
-      IMPORTANT FOR DEPLOYMENT (e.g., Vercel):
-      Browsers cannot directly execute .tsx files. 
-      For production, index.tsx (and any other .ts/.tsx files it imports locally) 
-      MUST be transpiled to JavaScript (.js), and this script tag updated to src="/index.js" (or the output path).
-      This typically involves setting up a build process (e.g., using tsc, Vite, Parcel, Webpack, etc.) 
-      and configuring your deployment platform (like Vercel) to run this build script.
-      If you are using Vercel and have configured it as "Other" (for static sites),
-      ensure your build output directory contains the transpiled JS and this HTML file pointing to it.
-      The current import map setup loads external dependencies like React from esm.sh, 
-      but local .tsx files still need handling for production.
+      CRITICAL FOR PRODUCTION DEPLOYMENT (e.g., Vercel):
+      This HTML file now references "/index.js".
+      You MUST transpile your "index.tsx" file (and any other local .ts/.tsx files it imports)
+      into a JavaScript file named "index.js" and place it in the root directory of your project.
+      Browsers cannot execute .tsx files directly.
+      
+      Example using esbuild:
+      1. Install esbuild: npm install --save-dev esbuild
+      2. Run build: npx esbuild index.tsx --bundle --outfile=index.js --format=esm --jsx=react-jsx
+      
+      For Vercel settings:
+      - Framework Preset: Other
+      - Build Command: (Can be your transpilation command, or the echo command from package.json if you transpile locally before pushing)
+      - Output Directory: MUST BE BLANK (or root) if your index.html and transpiled index.js are in the root.
     -->
-    <script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.js"></script>
   </body>
 </html>
