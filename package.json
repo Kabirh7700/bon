@@ -1,0 +1,10 @@
+
+{
+  "name": "bonhoeffer-scm-dashboard-importmap",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "echo \"No build step defined for bundling dependencies; using browser import maps. For production, TSX files must be transpiled to JS.\"",
+    "vercel-build": "echo \"Vercel build: Dependencies managed by import map. Ensure TSX files are transpiled to JS and index.html points to the JS entry point for a successful deployment. This script is a placeholder.\""
+  }
+}
