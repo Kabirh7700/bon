@@ -139,20 +139,21 @@
   <body>
     <div id="root"></div>
     <!-- 
-      CRITICAL FOR PRODUCTION DEPLOYMENT (e.g., Vercel):
+      PRODUCTION DEPLOYMENT (e.g., Vercel):
       This HTML file now references "/index.js".
-      You MUST transpile your "index.tsx" file (and any other local .ts/.tsx files it imports)
-      into a JavaScript file named "index.js" and place it in the root directory of your project.
-      Browsers cannot execute .tsx files directly.
+      The 'npm run build' script (defined in package.json) will:
+      1. Use 'esbuild' to transpile "index.tsx" into "build_output/index.js".
+      2. Copy this "index.html" into "build_output/index.html".
       
-      Example using esbuild:
-      1. Install esbuild: npm install --save-dev esbuild
-      2. Run build: npx esbuild index.tsx --bundle --outfile=index.js --format=esm --jsx=react-jsx
-      
-      For Vercel settings:
-      - Framework Preset: Other
-      - Build Command: (Can be your transpilation command, or the echo command from package.json if you transpile locally before pushing)
-      - Output Directory: MUST BE BLANK (or root) if your index.html and transpiled index.js are in the root.
+      Vercel Deployment Configuration (vercel.json and Project Settings):
+      - The 'vercel.json' file configures Vercel to use '@vercel/static-build'.
+      - This builder runs 'npm run build' (or your specified build command).
+      - It then expects the output in the directory specified by 'distDir' in vercel.json 
+        (which is set to 'build_output').
+      - In Vercel Project Settings:
+        - Framework Preset: Other
+        - Build Command: npm run build (or npm run vercel-build)
+        - Output Directory: build_output
     -->
     <script type="module" src="/index.js"></script>
   </body>
