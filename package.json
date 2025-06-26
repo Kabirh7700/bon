@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "echo \"No build step defined for bundling dependencies; using browser import maps. For production, TSX files must be transpiled to JS.\"",
-    "vercel-build": "echo \"Vercel build: Dependencies managed by import map. Ensure TSX files are transpiled to JS and index.html points to the JS entry point for a successful deployment. This script is a placeholder.\""
+    "build": "echo \"Build Script for Vercel: This script does not produce an output directory. For Vercel deployment to succeed, ENSURE 'Output Directory' in Vercel Project Settings > Build & Development Settings is LEFT BLANK (or set to root). Also, index.tsx MUST be transpiled to index.js and placed in the root.\"",
+    "vercel-build": "echo \"Vercel Build Info: Using import maps. index.tsx MUST be manually transpiled to index.js and placed in the root. In Vercel Project Settings > Build & Development Settings, 'Output Directory' should be BLANK to serve from root.\""
   }
 }
